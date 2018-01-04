@@ -1,0 +1,31 @@
+{
+  "name": "bootstrap-website",
+  "version": "1.0.0",
+  "description": "Bootstraps a website with webpack, mustache, firebase, etc",
+  "main": "index.js",
+  "scripts": {
+    "start": "$(npm bin)/webpack-dev-server",
+    "mustache:watch": "nodemon -e js,mustache --exec \"yarn mustache\"",
+    "mustache:apply-config": "bash -c 'cat ./src/html/root_config.json \"./src/html/pages/$1/config.json\" | jq -s add ' --",
+    "mustache:partials": "for file in $(cd src/html/partials; ls *.mustache); do partials=\"$partials -p src/html/partials/$file\"; done; echo $partials",
+    "mustache": "for file in $(cd src/html/pages; ls -d */ | cut -f1 -d'/'); do mustache -p ./src/html/pages/$file/content.mustache $(npm run mustache:partials -s) $(npm run mustache:apply-config -s -- $file > dist/config.json; echo dist/config.json) ./src/html/template.mustache > ./dist/$file.html; rm dist/config.json; done",
+    "firebase-clean-urls": "for file in $(cd src/html/pages; ls -d */ | cut -f1 -d'/'); do json=$json'{\"source\": \"'\"/$file\"'\", \"destination\": \"'\"/$file.html\"'\"},'; done; echo \"[$(echo $json | rev | cut -c2- | rev)]\""
+  },
+  "author": "Damien Bry",
+  "license": "MIT",
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.3.1",
+    "critical": "^1.1.0",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "mustache": "^2.3.0",
+    "node-sass": "^4.7.2",
+    "nodemon": "^1.14.7",
+    "postcss-loader": "^2.0.9",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7",
+    "webpack-manifest-plugin": "^1.3.2"
+  }
+}
