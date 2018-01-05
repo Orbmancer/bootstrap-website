@@ -2,6 +2,8 @@ $primary: #0A64A4;
 $secondary: #FF9000;
 $tertiary: #580EAD;
 
+$negative-space-1: 20px;
+
 .gradient:before {
   position: absolute;
   top: 0;
@@ -9,5 +11,5 @@ $tertiary: #580EAD;
   bottom: 0;
   left: 0;
   content: '';
-  background: linear-gradient(45deg, transparentize($primary, 0.8), transparentize($tertiary, 0.8));
+  background: linear-gradient(45deg, transparentize($primary, 0.5), transparentize($tertiary, 0.5));
 }

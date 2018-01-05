@@ -1,4 +1,9 @@
 @import './variables';
+@import './animations';
+
+// Import Skeleton scss files
+// They are downloaded in the postinstall hook
+@import './skeleton/skeleton';
 
 body {
   @extend .gradient;
@@ -7,6 +12,72 @@ body {
   background-position: center center;
   background-size: cover;
 
-  min-height: 100vh;
-  min-width: 100vw;
+
+  margin: 0;
+
+  main {
+    position: relative;
+    min-height: 100vh;
+    min-width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+ul {
+  text-align: left;
+  list-style: square;
+  margin-left: $negative-space-1;
+}
+
+.avatar {
+  $size: 128px;
+
+  background-image: url('/assets/images/avatar.jpg');
+  background-position: center center;
+  background-size: cover;
+
+  height: $size;
+  width: $size;
+
+  border-radius: 50%;
+
+  display: inline-block;
+}
+
+.block {
+  @extend .slide-top;
+
+  display: inline-block;
+  text-align: center;
+
+  width: 100%;
+  max-width: 500px;
+  margin: $negative-space-1;
+
+  border-radius: $negative-space-1;
+  padding: $negative-space-1;
+
+  background-color: white;
+
+  color: black;
+
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }

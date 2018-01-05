@@ -1,0 +1,8 @@
+{
+  "title": "Elyios - votre expert en réseaux sociaux",
+  "description": "Envie d’être performant sur les réseaux sociaux ? Notre équipe d'experts en communication digitale le fait pour vous.",
+  "image_social": "https://elyios.com/assets/images/social-card-index.jpg?v1",
+  "class_wrapper": "index",
+  "bundle": "landing",
+  "page_scripts": "<script src=\"/assets/js/ScrollTrigger.min.js\" async></script>"
+}
