@@ -1,9 +1,15 @@
 @import './variables';
 @import './animations';
 
+@import './fonts/raleway';
+
 // Import Skeleton scss files
 // They are downloaded in the postinstall hook
 @import './skeleton/skeleton';
+
+// Import FontAwesome scss files
+// Already packaged inside the repo, please update them as needed
+@import './font-awesome/font-awesome';
 
 body {
   @extend .gradient;
@@ -21,6 +27,7 @@ body {
     min-width: 100vw;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
@@ -41,10 +48,19 @@ h3 {
   font-weight: bold;
 }
 
+a, a:hover {
+  text-decoration: none;
+}
+
 ul {
   text-align: left;
   list-style: square;
   margin-left: $negative-space-1;
+}
+hr {
+  max-width: 100px;
+  margin-top: $negative-space-1 *2;
+  margin-bottom: 0;
 }
 
 .avatar {
@@ -62,10 +78,28 @@ ul {
   display: inline-block;
 }
 
+.menu {
+  &, a {
+    color: white;
+  }
+
+  a {
+    margin: 0 10px;
+
+    &:hover {
+      color: $secondary;
+      text-transform: underline;
+    }
+    &.selected {
+      font-weight: bold;
+      color: $secondary;
+    }
+  }
+}
+
 .block {
   @extend .slide-top;
 
-  display: inline-block;
   text-align: center;
 
   width: 100%;
@@ -80,4 +114,11 @@ ul {
   color: black;
 
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.social {
+  padding: $negative-space-1;
+
+  > * {
+    margin: $negative-space-1 /2;
+  }
 }

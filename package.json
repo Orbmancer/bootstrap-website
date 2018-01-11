@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "$(npm bin)/webpack-dev-server",
+    "build": "rm -r dist && mkdir dist && cp -r assets dist/assets && yarn mustache && $(npm bin)/webpack --optimize-minimize",
+    "deploy": "yarn build && firebase deploy && growlnotify -m 'front deployed 🚀'",
 
     "postinstall": "yarn install:skeleton",
     "install:skeleton": "mkdir .tmp && git clone https://github.com/whatsnewsaes/Skeleton-Sass .tmp && cp -r .tmp/scss src/scss/skeleton && rm -rf .tmp",
@@ -17,7 +19,9 @@
 
     "mustache": "for file in $(cd src/html/pages; ls -d */ | cut -f1 -d'/'); do mustache -p ./src/html/pages/$file/content.mustache $(npm run mustache:partials -s) $(npm run mustache:apply-config -s -- $file > dist/config.json; echo dist/config.json) ./src/html/template.mustache > ./dist/$file.html; rm dist/config.json; done",
 
-    "firebase-clean-urls": "for file in $(cd src/html/pages; ls -d */ | cut -f1 -d'/'); do json=$json'{\"source\": \"'\"/$file\"'\", \"destination\": \"'\"/$file.html\"'\"},'; done; echo \"[$(echo $json | rev | cut -c2- | rev)]\""
+    "firebase-clean-urls": "for file in $(cd src/html/pages; ls -d */ | cut -f1 -d'/'); do json=$json'{\"source\": \"'\"/$file\"'\", \"destination\": \"'\"/$file.html\"'\"},'; done; echo \"[$(echo $json | rev | cut -c2- | rev)]\"",
+
+    "webpack-clean-urls": "for file in $(cd src/html/pages; ls -d */ | cut -f1 -d'/'); do json=$json'{\"from\": \"'\"/$file\"'\", \"to\": \"'\"/$file.html\"'\"},'; done; echo \"[$(echo $json | rev | cut -c2- | rev)]\""
 
   },
   "author": "Damien Bry",

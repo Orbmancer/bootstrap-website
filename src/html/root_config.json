@@ -1,7 +1,10 @@
 {
   "lang": "fr",
-  "domain": "https://elyios.com",
-  "website_name": "Elyios",
+  "domain": "https://damien-bry.com",
+  "website_name": "Damien Bry | Minimalist",
   "facebook_app_id": "1648229195222238",
-  "twitter_id": "@elyios"
+  "twitter_id": "@orbmancer",
+  "linkedin_id": "damienbry",
+  "github_id": "Orbmancer",
+  "description": "1% better than yesterday = 2x better in 70 days. Minimalist. Digital Nomad. CTO at Elyios. Meet me !"
 }

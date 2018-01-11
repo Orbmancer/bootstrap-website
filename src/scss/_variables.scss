@@ -13,3 +13,16 @@ $negative-space-1: 20px;
   content: '';
   background: linear-gradient(45deg, transparentize($primary, 0.5), transparentize($tertiary, 0.5));
 }
+
+button.button-secondary {
+  background-color: $secondary;
+  border-color: $secondary;
+  color: white;
+
+  &:hover {
+    $color: darken($secondary, 10%);
+    background-color: $color;
+    border-color: $color;
+    color: white;
+  }
+}

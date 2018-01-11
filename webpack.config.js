@@ -15,7 +15,7 @@ const config = {
   },
   devServer: {
     historyApiFallback: {
-      rewrites: []
+      rewrites: [{"from": "/how", "to": "/how.html"},{"from": "/index", "to": "/index.html"},{"from": "/now", "to": "/now.html"},{"from": "/why", "to": "/why.html"}]
     },
     contentBase: './dist'
   },

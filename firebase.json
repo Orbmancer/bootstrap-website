@@ -1,0 +1,6 @@
+{
+  "hosting": {
+    "public": "dist",
+    "rewrites": [{"source": "/how", "destination": "/how.html"},{"source": "/index", "destination": "/index.html"},{"source": "/now", "destination": "/now.html"},{"source": "/why", "destination": "/why.html"}]
+  }
+}
