@@ -17,9 +17,7 @@ body {
   background-image: url('/assets/images/background.jpg');
   background-position: center center;
   background-size: cover;
-
-
-  margin: 0;
+  background-repeat: no-repeat;
 
   main {
     position: relative;
@@ -79,6 +77,8 @@ hr {
 }
 
 .menu {
+  margin-top: 20px;
+
   &, a {
     color: white;
   }

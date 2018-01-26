@@ -3,6 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 const config = {
   entry: {
@@ -39,6 +40,10 @@ const config = {
     new ManifestPlugin()
   ]
 };
+
+if (process.env.NODE_ENV !== 'production') {
+    config.plugins.push(new WebpackShellPlugin({onBuildEnd: ['yarn mustache:watch']}));
+}
 
 module.exports = config;
 
