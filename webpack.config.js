@@ -23,6 +23,14 @@ const config = {
   devtool: 'cheap-module-source-map',
   module: {
     rules: [{
+      test: /\.js$/,
+      loader: 'babel-loader',   // use the loader “babel-loader” to transform those files
+      exclude: /node_modules/,  // Do not fetch the packages installed by NPM
+      query: {
+        presets: ['es2015']
+      }
+    },
+      {
       test: /\.scss$/,
       use: [
         {loader: 'style-loader'},
