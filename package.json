@@ -10,7 +10,7 @@
     "postinstall": "yarn install:skeleton",
     "install:skeleton": "mkdir .tmp && git clone https://github.com/whatsnewsaes/Skeleton-Sass .tmp && cp -r .tmp/scss src/scss/skeleton && rm -rf .tmp",
     "mustache:watch": "nodemon -e js,mustache --exec \"yarn mustache\"",
-    "mustache:apply-config": "bash -c 'cat ./src/html/root_config.json \"./src/html/pages/$1/config.json\" | jq -s add ' --",
+    "mustache:apply-config": "bash -c 'cat ./src/html/root_config.json \"./src/html/pages/$1/config.json\" <(echo '\"'\"'{\"class_wrapper\": \"'\"'\"'$1'\"'\"'\"}'\"'\"') | jq -s add ' --",
     "mustache:partials": "for file in $(cd src/html/partials; ls *.mustache); do partials=\"$partials -p src/html/partials/$file\"; done; echo $partials",
     "mustache": "for file in $(cd src/html/pages; ls -d */ | cut -f1 -d'/'); do mustache -p ./src/html/pages/$file/content.mustache $(npm run mustache:partials -s) $(npm run mustache:apply-config -s -- $file > dist/config.json; echo dist/config.json) ./src/html/template.mustache > ./dist/$file.html; rm dist/config.json; done",
     "firebase-clean-urls": "for file in $(cd src/html/pages; ls -d */ | cut -f1 -d'/'); do json=$json'{\"source\": \"'\"/$file\"'\", \"destination\": \"'\"/$file.html\"'\"},'; done; echo \"[$(echo $json | rev | cut -c2- | rev)]\"",
@@ -33,5 +33,8 @@
     "webpack-dev-server": "^2.9.7",
     "webpack-manifest-plugin": "^1.3.2",
     "webpack-shell-plugin": "^0.5.0"
+  },
+  "dependencies": {
+    "webkul-micron": "https://github.com/Orbmancer/micron.git#feature-require"
   }
 }

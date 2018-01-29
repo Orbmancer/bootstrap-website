@@ -11,6 +11,9 @@
 // Already packaged inside the repo, please update them as needed
 @import './font-awesome/font-awesome';
 
+// Micron.js
+@import '../../node_modules/webkul-micron/dist/css/micron.min.css';
+
 body {
   @extend .gradient;
 
